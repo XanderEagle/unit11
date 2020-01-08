@@ -9,10 +9,10 @@ class Paddle(pygame.sprite.Sprite):
         self.main_surface = main_surface
 
         # Create a surface with the correct height and width
-        self.image =
+        self.image = pygame.Surface((self.width, self.height))
 
         # Get the rect coordinates
-        self.rect =
+        self.rect = self.image.get_rect()
 
         # Fill the surface with the correct color
 

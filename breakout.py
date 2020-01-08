@@ -1,32 +1,41 @@
 import pygame, sys
 from pygame.locals import *
 
+
 def main():
     # Constants that will be used in the program
-    APPLICATION_WIDTH = 400
-    APPLICATION_HEIGHT = 600
-    PADDLE_Y_OFFSET = 30
-    BRICKS_PER_ROW = 10
-    BRICK_SEP = 4  # The space between each brick
-    BRICK_Y_OFFSET = 70
-    BRICK_WIDTH =  (APPLICATION_WIDTH - (BRICKS_PER_ROW -1) * BRICK_SEP) / BRICKS_PER_ROW
-    BRICK_HEIGHT = 8
-    PADDLE_WIDTH = 60
-    PADDLE_HEIGHT = 10
-    RADIUS_OF_BALL = 10
-    NUM_TURNS = 3
+    application_width = 400
+    application_height = 600
+    paddle_y_offset = 30
+    bricks_per_row = 10
+    brick_sep = 4  # The space between each brick
+    brick_y_offset = 70
+    brick_width = (application_width - (bricks_per_row -1) * brick_sep) / bricks_per_row
+    brick_height = 8
+    paddle_width = 60
+    paddle_height = 10
+    radius_of_ball = 10
+    num_turns = 3
 
     # Sets up the colors
-    RED = (255, 0, 0)
-    ORANGE = (255, 165, 0)
-    YELLOW = (255, 255, 0)
-    GREEN =(0, 255, 0)
-    CYAN = (0, 255, 255)
-    BLACK = (0, 0, 0)
-    WHITE = (255, 255, 255)
+    red = (255, 0, 0)
+    orange = (255, 165, 0)
+    yellow = (255, 255, 0)
+    green =(0, 255, 0)
+    cyan = (0, 255, 255)
+    black = (0, 0, 0)
+    white = (255, 255, 255)
 
     # Step 1: Use loops to draw the rows of bricks. The top row of bricks should be 70 pixels away from the top of
     # the screen (BRICK_Y_OFFSET)
+
+    main_surface = pygame.display.set_mode((application_width, application_height), 0, 32)
+    main.surface.fill(255, 255, 255)
+    x_pos = brick_sep
+    y_pos = brick_y_offset
+
+
+
 
     while True:
         for event in pygame.event.get():
