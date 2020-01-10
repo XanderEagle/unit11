@@ -1,5 +1,6 @@
 import pygame
 
+
 class Paddle(pygame.sprite.Sprite):
 
     def __init__(self, main_surface, color, width, height):
@@ -7,6 +8,9 @@ class Paddle(pygame.sprite.Sprite):
 
         # finish setting the class variables to the parameters
         self.main_surface = main_surface
+        self.color = color
+        self.width = width
+        self.height = height
 
         # Create a surface with the correct height and width
         self.image = pygame.Surface((self.width, self.height))
@@ -16,5 +20,5 @@ class Paddle(pygame.sprite.Sprite):
 
         # Fill the surface with the correct color
 
-    def move(self):
-        pass
+    def move(self, pos):
+        self.rect.x = pos[0]
