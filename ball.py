@@ -18,8 +18,8 @@ class Ball(pygame.sprite.Sprite):
         self.image = pygame.Surface((self.radius, self.radius))
         self.rect = self.image.get_rect()
 
-        self.x_speed = 4
-        self.y_speed = 5
+        self.x_speed = 7
+        self.y_speed = 8
 
         # Add a circle to represent the ball to the surface just created.
 
@@ -30,4 +30,12 @@ class Ball(pygame.sprite.Sprite):
         if self.rect.left < 0 or self.rect.right > self.window_width:
             self.x_speed = -self.x_speed
         if self.rect.top < 0 or self.rect.bottom > self.window_height:
+            self.y_speed = -self.y_speed
+
+    def paddle_collide(self, spriteGroup):
+        if pygame.sprite.spritecollide(self, spriteGroup, False):
+            self.y_speed = -self.y_speed
+
+    def brick_collide(self, spriteGroup):
+        if pygame.sprite.spritecollide(self, spriteGroup, True):
             self.y_speed = -self.y_speed
