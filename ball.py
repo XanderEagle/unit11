@@ -17,9 +17,11 @@ class Ball(pygame.sprite.Sprite):
         # background of your breakout game will be.
         self.image = pygame.Surface((self.radius, self.radius))
         self.rect = self.image.get_rect()
+        self.image.fill(self.color)
+        self.sound = pygame.mixer.Sound("2wav-sounds.wav")
 
-        self.x_speed = 6
-        self.y_speed = 7
+        self.x_speed = 4
+        self.y_speed = 5
 
         # Add a circle to represent the ball to the surface just created.
 
@@ -35,6 +37,7 @@ class Ball(pygame.sprite.Sprite):
     def paddle_collide(self, spriteGroup):
         if pygame.sprite.spritecollide(self, spriteGroup, False):
             self.y_speed = -self.y_speed
+            self.sound.play()
 
     def brick_collide(self, spriteGroup):
         if pygame.sprite.spritecollide(self, spriteGroup, True):

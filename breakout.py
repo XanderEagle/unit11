@@ -36,17 +36,19 @@ def main():
     # the screen (BRICK_Y_OFFSET)
 
     main_surface = pygame.display.set_mode((application_width, application_height), 0, 32)
-    main_surface.fill((255, 255, 255))
+    main_surface.fill((0, 0, 0))
+    background = pygame.image.load("revan.jpg")
+    main_surface.blit(background, (0, 0))
     x_pos = brick_sep
     y_pos = brick_y_offset
 
-    my_paddle = paddle.Paddle(main_surface, (black), (paddle_width), (paddle_height))
+    my_paddle = paddle.Paddle(main_surface, (white), (paddle_width), (paddle_height))
     my_paddle.rect.x = 200
     my_paddle.rect.y = 570
     main_surface.blit(my_paddle.image, my_paddle.rect)
     paddle_group.add(my_paddle)
 
-    my_ball = ball.Ball((black), application_width, application_height, radius_of_ball)
+    my_ball = ball.Ball((red), application_width, application_height, radius_of_ball)
     my_ball.rect.x = 200
     my_ball.rect.y = 300
     main_surface.blit(my_ball.image, my_ball.rect)
@@ -161,7 +163,7 @@ def main():
     # the screen (BRICK_Y_OFFSET)
 
     while True:
-        main_surface.fill(white)
+        main_surface.blit(background, (0, 0))
         for a_brick in bricks_group:
             main_surface.blit(a_brick.image, a_brick.rect)
         my_paddle.move(pygame.mouse.get_pos())
@@ -169,6 +171,19 @@ def main():
         my_ball.brick_collide(bricks_group)
         main_surface.blit(my_paddle.image, my_paddle.rect)
         my_ball.move()
+        if my_ball.rect.bottom > application_height:
+            num_turns -= 1
+            my_ball.rect.x = 200
+            my_ball.rect.y = 300
+            main_surface.blit(my_ball.image, my_ball.rect)
+        if num_turns == 0:
+            main_surface.fill(white)
+            myFont = pygame.font.SysFont("Helvetica", 65)
+            label = myFont.render("GAME OVER", 1, white)
+            main_surface.blit(label, (200, 275))
+            pygame.display.update()
+            pygame.time.wait(100)
+            break
         main_surface.blit(my_ball.image, my_ball.rect)
         pygame.display.update()
         for event in pygame.event.get():
