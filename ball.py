@@ -18,8 +18,8 @@ class Ball(pygame.sprite.Sprite):
         self.image = pygame.Surface((self.radius, self.radius))
         self.rect = self.image.get_rect()
 
-        self.x_speed = 7
-        self.y_speed = 8
+        self.x_speed = 6
+        self.y_speed = 7
 
         # Add a circle to represent the ball to the surface just created.
 
