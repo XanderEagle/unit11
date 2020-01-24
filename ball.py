@@ -15,13 +15,15 @@ class Ball(pygame.sprite.Sprite):
 
         # Create a surface, get the rect coordinates, fill the surface with a white color (or whatever color the
         # background of your breakout game will be.
+
         self.image = pygame.Surface((self.radius, self.radius))
         self.rect = self.image.get_rect()
-        self.image.fill(self.color)
-        self.sound = pygame.mixer.Sound("2wav-sounds.wav")
-
         self.x_speed = 4
         self.y_speed = 5
+
+        pygame.mixer.init(44100, -16, 2, 2048)
+        self.sound = pygame.mixer.Sound("Lightsaber Turn On-SoundBible.com-647586083.wav")
+        self.sound2 = pygame.mixer.Sound("Click2-Sebastian-759472264.wav")
 
         # Add a circle to represent the ball to the surface just created.
 
@@ -42,3 +44,6 @@ class Ball(pygame.sprite.Sprite):
     def brick_collide(self, spriteGroup):
         if pygame.sprite.spritecollide(self, spriteGroup, True):
             self.y_speed = -self.y_speed
+            self.sound2.play()
+
+
