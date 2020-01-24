@@ -1,7 +1,7 @@
 # Xander Eagle
 # January 24, 2020
 
-# This program makes the game breakout
+# This program makes a star wars themed breakout game (YOU HAVE TO USE THE FORCE BECAUSE THE BALL IS HARD TO SEE)
 
 import pygame, sys
 from pygame.locals import *
